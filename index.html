@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliProposal – AI-Driven R&D Proposal Evaluation System</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Chart.js and Confetti via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- ========================================================================= -->
+    <!-- LANDING VIEW                                                              -->
+    <!-- ========================================================================= -->
+    <div id="landing-view">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a class="logo" href="#">
+                    <i class="fa-solid fa-brain logo-icon"></i>
+                    <span>IntelliProposal</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a class="active-link" onclick="scrollToSection('hero')">Home</a></li>
+                    <li><a onclick="scrollToSection('features')">Features</a></li>
+                    <li><a onclick="scrollToSection('workflow')">Workflow</a></li>
+                    <li><a onclick="scrollToSection('stats')">Analytics</a></li>
+                    <li><a onclick="scrollToSection('about')">About</a></li>
+                </ul>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <button class="btn-secondary" onclick="showLoginModal()">Login</button>
+                    <button class="btn-primary" onclick="switchToApp()">Launch App</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="fa-solid fa-atom"></i> Smart India Hackathon 2026 • Problem ID 25180
+                        </div>
+                        <h1 class="hero-title">AI-Powered R&D Proposal Evaluation Platform</h1>
+                        <p class="hero-description">
+                            Empowering the Ministry of Coal and CMPDI with advanced Machine Learning to automate document extraction, semantic similarity checks, novelty scoring, and financial validation.
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn-primary" onclick="switchToApp()">
+                                Get Started <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                            <button class="btn-secondary" onclick="scrollToSection('features')">
+                                Learn More
+                            </button>
+                        </div>
+                        <div class="gov-logos">
+                            <div class="gov-logo-item">
+                                <i class="fa-solid fa-landmark"></i>
+                                <span>Ministry of Coal (MoC)</span>
+                            </div>
+                            <div class="gov-logo-item">
+                                <i class="fa-solid fa-mountain"></i>
+                                <span>CMPDI, NaCCER</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual">
+                        <div class="hero-circle-glow"></div>
+                        <!-- High Fidelity Futuristic AI Brain SVG -->
+                        <svg class="hero-illustration" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Glowing neural pathways background grid -->
+                            <path d="M50 250 L450 250 M250 50 L250 450" stroke="rgba(0, 242, 254, 0.05)" stroke-width="2" />
+                            <circle cx="250" cy="250" r="180" stroke="rgba(0, 242, 254, 0.1)" stroke-width="1" stroke-dasharray="5 5" />
+                            <circle cx="250" cy="250" r="120" stroke="rgba(0, 242, 254, 0.15)" stroke-width="1" />
+                            
+                            <!-- Glowing Hexagons representing data modules -->
+                            <polygon points="250,90 285,110 285,150 250,170 215,150 215,110" fill="rgba(0, 242, 254, 0.03)" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1.5" />
+                            <polygon points="120,200 155,220 155,260 120,280 85,260 85,220" fill="rgba(0, 242, 254, 0.03)" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1.5" />
+                            <polygon points="380,200 415,220 415,260 380,280 345,260 345,220" fill="rgba(0, 242, 254, 0.03)" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1.5" />
+                            <polygon points="250,330 285,350 285,390 250,410 215,390 215,350" fill="rgba(0, 242, 254, 0.03)" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1.5" />
+                            
+                            <!-- Left Brain Hemisphere (Logic & Mining Data Nodes) -->
+                            <path d="M250 120 C180 120, 130 170, 130 240 C130 290, 160 320, 180 340 C190 350, 200 370, 210 380 C220 390, 230 400, 250 400" stroke="url(#cyanGrad)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+                            <!-- Right Brain Hemisphere (Creative & AI Analysis Pathways) -->
+                            <path d="M250 120 C320 120, 370 170, 370 240 C370 290, 340 320, 320 340 C310 350, 300 370, 290 380 C280 390, 270 400, 250 400" stroke="url(#blueGrad)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+                            
+                            <!-- Neural connections mapping -->
+                            <line x1="250" y1="120" x2="250" y2="400" stroke="rgba(255, 255, 255, 0.2)" stroke-width="2" stroke-dasharray="4 4" />
+                            <line x1="180" y1="180" x2="250" y2="210" stroke="var(--accent-cyan)" stroke-width="1.5" opacity="0.6" />
+                            <line x1="320" y1="180" x2="250" y2="210" stroke="var(--accent-blue)" stroke-width="1.5" opacity="0.6" />
+                            <line x1="150" y1="260" x2="250" y2="290" stroke="var(--accent-cyan)" stroke-width="1.5" opacity="0.6" />
+                            <line x1="350" y1="260" x2="250" y2="290" stroke="var(--accent-blue)" stroke-width="1.5" opacity="0.6" />
+                            
+                            <!-- Brain Core AI Processor Node -->
+                            <circle cx="250" cy="250" r="30" fill="url(#cyanGrad)" filter="url(#glow-strong)" />
+                            <text x="250" y="255" font-family="'Outfit', sans-serif" font-weight="800" font-size="14" fill="#030c17" text-anchor="middle">AI</text>
+                            
+                            <!-- Document parsing flow animations -->
+                            <!-- Floating pages being scanned -->
+                            <g transform="translate(60, 110)" filter="url(#glow-soft)">
+                                <rect x="0" y="0" width="45" height="60" rx="4" fill="rgba(14, 42, 79, 0.6)" stroke="var(--accent-cyan)" stroke-width="1.5" />
+                                <line x1="8" y1="15" x2="37" y2="15" stroke="var(--text-secondary)" stroke-width="2" />
+                                <line x1="8" y1="25" x2="30" y2="25" stroke="var(--text-secondary)" stroke-width="2" />
+                                <line x1="8" y1="35" x2="37" y2="35" stroke="var(--text-secondary)" stroke-width="2" />
+                                <line x1="8" y1="45" x2="20" y2="45" stroke="var(--accent-cyan)" stroke-width="2" />
+                            </g>
+                            
+                            <g transform="translate(380, 90)" filter="url(#glow-soft)">
+                                <rect x="0" y="0" width="45" height="60" rx="4" fill="rgba(14, 42, 79, 0.6)" stroke="var(--accent-blue)" stroke-width="1.5" />
+                                <line x1="8" y1="15" x2="37" y2="15" stroke="var(--text-secondary)" stroke-width="2" />
+                                <line x1="8" y1="25" x2="37" y2="25" stroke="var(--text-secondary)" stroke-width="2" />
+                                <line x1="8" y1="35" x2="25" y2="35" stroke="var(--accent-blue)" stroke-width="2" />
+                            </g>
+                            
+                            <!-- Pulsing Nodes -->
+                            <circle cx="180" cy="180" r="6" fill="var(--accent-cyan)" filter="url(#glow-soft)"/>
+                            <circle cx="320" cy="180" r="6" fill="var(--accent-blue)" filter="url(#glow-soft)"/>
+                            <circle cx="150" cy="260" r="6" fill="var(--accent-cyan)" filter="url(#glow-soft)"/>
+                            <circle cx="350" cy="260" r="6" fill="var(--accent-blue)" filter="url(#glow-soft)"/>
+                            <circle cx="210" cy="330" r="6" fill="var(--accent-green)" filter="url(#glow-soft)"/>
+                            <circle cx="290" cy="330" r="6" fill="var(--accent-green)" filter="url(#glow-soft)"/>
+                            
+                            <!-- Glowing gradient definitions -->
+                            <defs>
+                                <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#4facfe" />
+                                    <stop offset="100%" stop-color="#00f2fe" />
+                                </linearGradient>
+                                <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00f2fe" />
+                                    <stop offset="100%" stop-color="#2b6cb0" />
+                                </linearGradient>
+                                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="5" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                                <filter id="glow-strong" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="10" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                                <filter id="glow-soft" x="-10%" y="-10%" width="120%" height="120%">
+                                    <feGaussianBlur stdDeviation="3" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats" class="container" style="padding: 60px 0;">
+            <div class="stat-cards-grid">
+                <div class="glass-panel stat-card">
+                    <div class="stat-card-header">
+                        <span>Total R&D Proposals</span>
+                        <div class="stat-card-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                    </div>
+                    <div class="stat-card-value">1,482</div>
+                    <div class="stat-card-trend trend-up">
+                        <i class="fa-solid fa-circle-arrow-up"></i> +12% this cycle
+                    </div>
+                </div>
+                <div class="glass-panel stat-card success">
+                    <div class="stat-card-header">
+                        <span>AI Accuracy Rating</span>
+                        <div class="stat-card-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    </div>
+                    <div class="stat-card-value">98.4%</div>
+                    <div class="stat-card-trend trend-up">
+                        <i class="fa-solid fa-circle-arrow-up"></i> Consistent extraction
+                    </div>
+                </div>
+                <div class="glass-panel stat-card">
+                    <div class="stat-card-header">
+                        <span>Avg. Processing Time</span>
+                        <div class="stat-card-icon"><i class="fa-solid fa-bolt"></i></div>
+                    </div>
+                    <div class="stat-card-value">2.4m</div>
+                    <div class="stat-card-trend trend-down">
+                        <i class="fa-solid fa-circle-arrow-down"></i> -85% vs Manual
+                    </div>
+                </div>
+                <div class="glass-panel stat-card success">
+                    <div class="stat-card-header">
+                        <span>Reviewer Efficiency</span>
+                        <div class="stat-card-icon"><i class="fa-solid fa-users-gear"></i></div>
+                    </div>
+                    <div class="stat-card-value">4.8x</div>
+                    <div class="stat-card-trend trend-up">
+                        <i class="fa-solid fa-circle-arrow-up"></i> Accelerated decisions
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-tag">Key Pillars</span>
+                    <h2 class="section-title">Automated Intelligent Evaluation</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="glass-panel feature-card">
+                        <div class="feature-icon-wrapper"><i class="fa-solid fa-microchip"></i></div>
+                        <h3 class="feature-title">AI OCR & Parsing</h3>
+                        <p class="feature-desc">Digitize scanned proposals, tables, and budget sheets with premium PDF/DOCX multi-modal processing algorithms.</p>
+                    </div>
+                    <div class="glass-panel feature-card">
+                        <div class="feature-icon-wrapper"><i class="fa-solid fa-fingerprint"></i></div>
+                        <h3 class="feature-title">Semantic Novelty</h3>
+                        <p class="feature-desc">Prevent duplicates by scanning cross-institutional databases to match patents, past projects, and publication indexes.</p>
+                    </div>
+                    <div class="glass-panel feature-card">
+                        <div class="feature-icon-wrapper"><i class="fa-solid fa-coins"></i></div>
+                        <h3 class="feature-title">Financial Audit</h3>
+                        <p class="feature-desc">Automatically validate cost breakdowns against CMPDI funding limits and flag equipment cost inflation.</p>
+                    </div>
+                    <div class="glass-panel feature-card">
+                        <div class="feature-icon-wrapper"><i class="fa-solid fa-user-check"></i></div>
+                        <h3 class="feature-title">Expert Consensus</h3>
+                        <p class="feature-desc">Bridge scientific expertise with machine intelligence using side-by-side proposal views, consensus boards, and digital signs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow Page -->
+        <section id="workflow" style="padding: 80px 0; background: rgba(3, 12, 23, 0.4);">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-tag">Inside the Engine</span>
+                    <h2 class="section-title">End-to-End Evaluation Flow</h2>
+                </div>
+                
+                <div class="workflow-container">
+                    <div class="workflow-steps-wrap">
+                        <div class="glass-panel workflow-step-card active-step">
+                            <div class="workflow-step-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                            <h4 class="workflow-step-title">1. Proposal Upload</h4>
+                            <p class="workflow-step-desc">Drop R&D PDF/DOCX files</p>
+                        </div>
+                        <div class="glass-panel workflow-step-card">
+                            <div class="workflow-step-icon"><i class="fa-solid fa-qrcode"></i></div>
+                            <h4 class="workflow-step-title">2. OCR & PDF Parsing</h4>
+                            <p class="workflow-step-desc">Extract text & tables</p>
+                        </div>
+                        <div class="glass-panel workflow-step-card">
+                            <div class="workflow-step-icon"><i class="fa-solid fa-brain"></i></div>
+                            <h4 class="workflow-step-title">3. NLP & Similarity</h4>
+                            <p class="workflow-step-desc">Understand research intent</p>
+                        </div>
+                        <div class="glass-panel workflow-step-card">
+                            <div class="workflow-step-icon"><i class="fa-solid fa-clone"></i></div>
+                            <h4 class="workflow-step-title">4. Novelty Check</h4>
+                            <p class="workflow-step-desc">Cross-check patents & papers</p>
+                        </div>
+                        <div class="glass-panel workflow-step-card">
+                            <div class="workflow-step-icon"><i class="fa-solid fa-calculator"></i></div>
+                            <h4 class="workflow-step-title">5. Budget Validation</h4>
+                            <p class="workflow-step-desc">Audit financial compliance</p>
+                        </div>
+                        <div class="glass-panel workflow-step-card">
+                            <div class="workflow-step-icon"><i class="fa-solid fa-circle-check"></i></div>
+                            <h4 class="workflow-step-title">6. Recommendation</h4>
+                            <p class="workflow-step-desc">Decision matrix consensus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / SIH Info -->
+        <section id="about" style="padding: 80px 0;">
+            <div class="container">
+                <div class="glass-panel" style="padding: 50px; text-align: center; max-width: 900px; margin: 0 auto;">
+                    <i class="fa-solid fa-circle-info" style="font-size: 48px; color: var(--accent-cyan); margin-bottom: 24px;"></i>
+                    <h2 style="font-size: 28px; margin-bottom: 16px;">Central Mine Planning & Design Institute Limited</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.8;">
+                        This system serves as an enterprise decision framework built for <strong>CMPDI, NaCCER</strong> under the guidance of the <strong>Ministry of Coal</strong>, automating the preliminary filtering of multi-million Indian rupee coal sector R&D grants to focus capital allocation on truly innovative, compliant scientific studies.
+                    </p>
+                    <button class="btn-primary" onclick="switchToApp()">Launch Live Demo View</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="border-top: 1px solid var(--border-color); padding: 40px 0; text-align: center; font-size: 13px; color: var(--text-muted);">
+            <p>© 2026 IntelliProposal System. Smart India Hackathon Demonstration. Developed for MoC & CMPDI.</p>
+        </footer>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000; background: rgba(3, 12, 23, 0.85); backdrop-filter: blur(8px);">
+        <div class="glass-panel login-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2 style="font-size: 24px;"><i class="fa-solid fa-shield-halved" style="color: var(--accent-cyan);"></i> Login</h2>
+                <i class="fa-solid fa-xmark" onclick="hideLoginModal()" style="cursor: pointer; color: var(--text-secondary); font-size: 20px;"></i>
+            </div>
+            <form id="login-form" onsubmit="handleLoginSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label">Authority Type</label>
+                    <select class="form-input" style="background: var(--bg-secondary);">
+                        <option value="evaluator">CMPDI Expert Committee Member</option>
+                        <option value="admin">NaCCER System Administrator</option>
+                        <option value="investigator">Principal Investigator (PI)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Credential ID</label>
+                    <input type="text" class="form-input" placeholder="e.g. CMPDI-2026-98" required value="CMPDI-EXP-80">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Security Passcode</label>
+                    <input type="password" class="form-input" placeholder="••••••••" required value="123456">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Authenticate & Enter</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ========================================================================= -->
+    <!-- APP VIEW (DASHBOARD SUITE)                                                -->
+    <!-- ========================================================================= -->
+    <div id="app-view">
+        <div class="app-container">
+            
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar" id="app-sidebar">
+                <div class="sidebar-brand">
+                    <a class="sidebar-logo" href="#" onclick="switchToLanding()">
+                        <i class="fa-solid fa-brain" style="color: var(--accent-cyan);"></i>
+                        <span>IntelliProposal</span>
+                    </a>
+                    <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars-staggered"></i></button>
+                </div>
+                
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link active" onclick="switchAppTab('dashboard-tab')">
+                            <i class="fa-solid fa-chart-pie"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" onclick="switchAppTab('upload-tab')">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>Upload Proposal</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" onclick="switchAppTab('details-tab')">
+                            <i class="fa-solid fa-file-lines"></i>
+                            <span>Proposal Details</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" onclick="switchAppTab('novelty-tab')">
+                            <i class="fa-solid fa-clone"></i>
+                            <span>Novelty Detection</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" onclick="switchAppTab('financial-tab')">
+                            <i class="fa-solid fa-coins"></i>
+                            <span>Financial Validation</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" onclick="switchAppTab('evaluation-tab')">
+                            <i class="fa-solid fa-gauge-high"></i>
+                            <span>AI Reports</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" onclick="switchAppTab('expert-tab')">
+                            <i class="fa-solid fa-signature"></i>
+                            <span>Expert Review</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" onclick="switchAppTab('analytics-tab')">
+                            <i class="fa-solid fa-chart-column"></i>
+                            <span>Analytics Suite</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" onclick="switchAppTab('notifications-tab')">
+                            <i class="fa-solid fa-bell"></i>
+                            <span>Notifications</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" onclick="switchAppTab('settings-tab')">
+                            <i class="fa-solid fa-gears"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-footer">
+                    <a class="sidebar-link" onclick="switchToLanding()" style="color: var(--accent-red);">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Exit Dashboard</span>
+                    </a>
+                </div>
+            </aside>
+            
+            <!-- Main Content Area -->
+            <div class="app-content">
+                
+                <!-- App Header -->
+                <header class="app-header">
+                    <div class="header-title-area">
+                        <h2 id="current-tab-title">Consensus Dashboard</h2>
+                        <p id="current-tab-desc">Comprehensive R&D proposal queue overview and key intelligence metrics</p>
+                    </div>
+                    
+                    <div class="header-actions">
+                        <!-- Theme Toggle Button -->
+                        <button class="header-btn" onclick="toggleTheme()" title="Switch Theme">
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                        </button>
+                        
+                        <!-- Notifications Badge -->
+                        <button class="header-btn" onclick="switchAppTab('notifications-tab')" title="Alert Notifications">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="notification-badge"></span>
+                        </button>
+                        
+                        <!-- User Profile Widget -->
+                        <div class="user-profile-widget" onclick="switchAppTab('settings-tab')">
+                            <div class="user-avatar">DR</div>
+                            <div class="user-info-text">
+                                <span style="font-weight:600; display:block;">Dr. R. K. Sen</span>
+                                <span class="user-role">CMPDI Chairman</span>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                
+                <!-- Dynamic Content Viewport -->
+                <main class="app-view-body">
+                    
+                    <!-- 1. DASHBOARD VIEW -->
+                    <div id="dashboard-tab" class="app-page-view active-page">
+                        <!-- Mini Stats Grid -->
+                        <div class="stat-cards-grid">
+                            <div class="glass-panel stat-card" style="cursor:pointer;" onclick="switchAppTab('analytics-tab')">
+                                <div class="stat-card-header">
+                                    <span>Pending Expert Audits</span>
+                                    <div class="stat-card-icon"><i class="fa-solid fa-clock"></i></div>
+                                </div>
+                                <div class="stat-card-value" id="dashboard-pending-count">4</div>
+                                <div class="stat-card-trend trend-up">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> Requires review consensus
+                                </div>
+                            </div>
+                            <div class="glass-panel stat-card success">
+                                <div class="stat-card-header">
+                                    <span>Highly Rated (AI >85)</span>
+                                    <div class="stat-card-icon"><i class="fa-solid fa-circle-check"></i></div>
+                                </div>
+                                <div class="stat-card-value">12</div>
+                                <div class="stat-card-trend trend-up">
+                                    <i class="fa-solid fa-circle-arrow-up"></i> Greenlit candidates
+                                </div>
+                            </div>
+                            <div class="glass-panel stat-card danger">
+                                <div class="stat-card-header">
+                                    <span>Novelty Infringements</span>
+                                    <div class="stat-card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                                </div>
+                                <div class="stat-card-value">3</div>
+                                <div class="stat-card-trend trend-down">
+                                    <i class="fa-solid fa-ban"></i> Over 50% matching text
+                                </div>
+                            </div>
+                            <div class="glass-panel stat-card">
+                                <div class="stat-card-header">
+                                    <span>Total Funds Allocation</span>
+                                    <div class="stat-card-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                                </div>
+                                <div class="stat-card-value">₹4.8 Cr</div>
+                                <div class="stat-card-trend trend-up">
+                                    <i class="fa-solid fa-chart-line"></i> Active fiscal allocation
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Charts Grid -->
+                        <div class="dashboard-grid">
+                            <!-- Main R&D proposal trends line/bar graph -->
+                            <div class="glass-panel chart-card">
+                                <div class="chart-header">
+                                    <h3 class="chart-title">CMPDI Departmental R&D Proposals Status</h3>
+                                    <div class="chart-actions">
+                                        <select class="chart-select" id="departmental-chart-filter" onchange="updateDashboardCharts()">
+                                            <option value="all">All Sectors</option>
+                                            <option value="coal">Coal Gasification</option>
+                                            <option value="safety">Mine Safety</option>
+                                            <option value="env">Environmental / Reclamation</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="dashboard-bar-chart"></canvas>
+                                </div>
+                            </div>
+                            <!-- AI Distribution breakdown pie -->
+                            <div class="glass-panel chart-card">
+                                <div class="chart-header">
+                                    <h3 class="chart-title">AI Scoring Distribution</h3>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="dashboard-pie-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Proposals Proposal List Table -->
+                        <div class="glass-panel table-card">
+                            <div class="table-header">
+                                <h3 style="font-size: 16px; font-weight:600;">Active R&D Proposal Evaluation Stream</h3>
+                                <div style="display:flex; gap:10px;">
+                                    <input type="text" id="proposal-search" class="form-input" style="padding: 6px 12px; font-size:12px; max-width:200px;" placeholder="Search proposals..." onkeyup="filterProposalTable()">
+                                    <button class="btn-primary" style="padding: 6px 12px; font-size:12px;" onclick="switchAppTab('upload-tab')">
+                                        <i class="fa-solid fa-plus"></i> New Proposal
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="custom-table-wrapper">
+                                <table class="custom-table" id="proposals-data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Proposal ID</th>
+                                            <th>Project Title</th>
+                                            <th>Lead Institution</th>
+                                            <th>Budget</th>
+                                            <th>AI Score</th>
+                                            <th>Novelty</th>
+                                            <th>Validation Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="proposals-list-tbody">
+                                        <!-- Dynamic rows generated by app.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2. UPLOAD PROPOSAL VIEW -->
+                    <div id="upload-tab" class="app-page-view">
+                        <div class="glass-panel" style="padding: 30px; margin-bottom: 24px;">
+                            <h3 style="font-size: 18px; margin-bottom: 15px;">Submit R&D Proposal for Automated AI Auditing</h3>
+                            <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 25px;">
+                                Drag and drop official CMPDI research documents. The AI module will automatically parse structured contents, scan historic datasets, check novelty guidelines, and produce compliance results.
+                            </p>
+                            
+                            <!-- Drag & Drop Zone -->
+                            <div class="upload-area" id="drag-drop-zone" onclick="triggerFileInput()">
+                                <input type="file" id="proposal-file-input" style="display: none;" accept=".pdf,.docx" onchange="handleFileSelect(event)">
+                                <div class="upload-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                                <div class="upload-text">
+                                    <h3>Drag & Drop R&D Project Documents here</h3>
+                                    <p>Supports .PDF and .DOCX files up to 25MB. System parses OCR and scanned components.</p>
+                                </div>
+                                <button class="btn-secondary">Browse Local Files</button>
+                            </div>
+                            
+                            <!-- Progress Loader -->
+                            <div class="progress-container" id="upload-progress-container">
+                                <div class="progress-bar-wrapper">
+                                    <div class="progress-bar-fill" id="upload-progress-fill"></div>
+                                </div>
+                                <div class="progress-status-text">
+                                    <span id="upload-status-label">Uploading R&D document...</span>
+                                    <span id="upload-percentage">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- AI Extracted / Log Dashboard -->
+                        <div class="parsing-visualizer" id="upload-parsing-visualizer">
+                            <div class="glass-panel parsing-log-card">
+                                <h4 style="color: var(--accent-cyan); margin-bottom: 12px; font-family: 'Outfit', sans-serif;">AI Extraction Logs (OCR, NER, NLP)</h4>
+                                <div id="parsing-log-lines">
+                                    <!-- Log lines will scroll here -->
+                                </div>
+                            </div>
+                            <div class="glass-panel parsed-preview-card">
+                                <h4 style="margin-bottom: 15px;">Extracted Project Meta-Data</h4>
+                                <div id="extracted-meta-content">
+                                    <p style="color: var(--text-muted); font-style:italic;">Complete the document upload sequence to inspect extracted metadata fields.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 3. PROPOSAL DETAILS VIEW -->
+                    <div id="details-tab" class="app-page-view">
+                        <div class="proposal-details-grid">
+                            <div class="glass-panel" style="padding: 30px;">
+                                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 20px;">
+                                    <h3 style="font-size:22px; max-width:80%;" id="detail-title">Dynamic Coal Extraction Optimization</h3>
+                                    <span class="status-badge pending" id="detail-status">PENDING REVIEW</span>
+                                </div>
+                                
+                                <div class="grid-2" style="margin-bottom: 30px;">
+                                    <div class="info-card-block">
+                                        <div class="info-card-label">Principal Investigator</div>
+                                        <div class="info-card-value" id="detail-investigator">Dr. Amit Verma, IIT Kharagpur</div>
+                                    </div>
+                                    <div class="info-card-block">
+                                        <div class="info-card-label">Submitted Department</div>
+                                        <div class="info-card-value" id="detail-department">Mine Safety & Production</div>
+                                    </div>
+                                    <div class="info-card-block">
+                                        <div class="info-card-label">Proposed Budget</div>
+                                        <div class="info-card-value" id="detail-budget">₹1.25 Crores</div>
+                                    </div>
+                                    <div class="info-card-block">
+                                        <div class="info-card-label">Project Timeline</div>
+                                        <div class="info-card-value" id="detail-duration">24 Months</div>
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-bottom: 24px;">
+                                    <h4 style="margin-bottom:8px; font-size:15px; color: var(--accent-cyan);">Project Objectives</h4>
+                                    <p style="color:var(--text-secondary); font-size:14px; text-align:justify;" id="detail-objectives">
+                                        To deploy automated sensor grids using laser telemetry inside underground deep mining shafts to predict gas leaks and collapse patterns.
+                                    </p>
+                                </div>
+                                
+                                <div style="margin-bottom: 24px;">
+                                    <h4 style="margin-bottom:8px; font-size:15px; color: var(--accent-cyan);">R&D Methodology</h4>
+                                    <p style="color:var(--text-secondary); font-size:14px; text-align:justify;" id="detail-methodology">
+                                        Installing low-power, intrinsically safe LoRaWAN transceivers across major mine routes, compiling dynamic ventilation charts, and running deep CNN models on central CMPDI edge computers.
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h4 style="margin-bottom:8px; font-size:15px; color: var(--accent-cyan);">Expected Outcomes</h4>
+                                    <p style="color:var(--text-secondary); font-size:14px; text-align:justify;" id="detail-outcomes">
+                                        Zero hazard incident rate, 12% rise in underground extraction output, and open-source models for mine safety audits.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- AI quick stats card -->
+                            <div>
+                                <div class="glass-panel" style="padding: 24px; margin-bottom: 24px;">
+                                    <h4 style="margin-bottom: 20px;">AI Audit Indicators</h4>
+                                    
+                                    <div style="display:flex; flex-direction:column; gap:16px;">
+                                        <div>
+                                            <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;">
+                                                <span>Semantic Similarity Match</span>
+                                                <span id="detail-similarity-label">12%</span>
+                                            </div>
+                                            <div style="width:100%; height:6px; background:rgba(255,255,255,0.05); border-radius:3px;">
+                                                <div id="detail-similarity-bar" style="height:100%; width:12%; background:var(--gradient-primary); border-radius:3px;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;">
+                                                <span>Financial Guideline Audits</span>
+                                                <span id="detail-finance-label">PASS</span>
+                                            </div>
+                                            <div style="width:100%; height:6px; background:rgba(255,255,255,0.05); border-radius:3px;">
+                                                <div id="detail-finance-bar" style="height:100%; width:100%; background:var(--accent-green); border-radius:3px;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;">
+                                                <span>Total AI Score</span>
+                                                <span id="detail-score-label">88 / 100</span>
+                                            </div>
+                                            <div style="width:100%; height:6px; background:rgba(255,255,255,0.05); border-radius:3px;">
+                                                <div id="detail-score-bar" style="height:100%; width:88%; background:var(--gradient-primary); border-radius:3px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="glass-panel" style="padding: 24px;">
+                                    <h4 style="margin-bottom:15px;">Actions</h4>
+                                    <button class="btn-primary" style="width:100%; margin-bottom:12px;" onclick="switchAppTab('expert-tab')">
+                                        <i class="fa-solid fa-signature"></i> Go to Expert consensus
+                                    </button>
+                                    <button class="btn-secondary" style="width:100%;" onclick="switchAppTab('novelty-tab')">
+                                        <i class="fa-solid fa-magnifying-glass"></i> Deep Similarity Scan
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 4. NOVELTY DETECTION VIEW -->
+                    <div id="novelty-tab" class="app-page-view">
+                        <div class="similarity-grid">
+                            <!-- Circular similarity indicator -->
+                            <div class="glass-panel similarity-circle-card">
+                                <h3 style="font-size:16px; margin-bottom: 20px;">Plagiarism & Semantic Similarity</h3>
+                                <div class="radial-progress-wrap">
+                                    <svg class="radial-progress-svg" width="160" height="160" viewBox="0 0 160 160">
+                                        <circle class="radial-bg" cx="80" cy="80" r="70"></circle>
+                                        <circle class="radial-fill" id="novelty-radial-fill" cx="80" cy="80" r="70" stroke-dasharray="440" stroke-dashoffset="440"></circle>
+                                    </svg>
+                                    <div class="radial-text">
+                                        <div class="radial-val" id="novelty-percentage-val">12%</div>
+                                        <div class="radial-label">Similarity</div>
+                                    </div>
+                                </div>
+                                <span class="status-badge approved" id="novelty-status-badge" style="font-size: 12px; padding: 6px 12px;">SAFE (NO NOVELTY COLLISION)</span>
+                            </div>
+                            
+                            <!-- Detailed reports on plagiarism check -->
+                            <div class="glass-panel" style="padding: 30px;">
+                                <h3 style="font-size: 18px; margin-bottom: 20px;">Semantic Alignment Matrix</h3>
+                                <p style="color:var(--text-secondary); font-size:13px; margin-bottom: 20px;">
+                                    Our NLP model checks the text semantic alignment across CMPDI archives, CSIR laboratories, IEEE Xplore, and Google Patent registries.
+                                </p>
+                                
+                                <h4 style="font-size: 14px; margin-bottom: 12px;">Identified Correlating Documents</h4>
+                                <div style="display:flex; flex-direction:column; gap:12px;" id="novelty-matching-list">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 5. FINANCIAL VALIDATION VIEW -->
+                    <div id="financial-tab" class="app-page-view">
+                        <div class="proposal-details-grid">
+                            <!-- Budget ledger -->
+                            <div class="glass-panel" style="padding: 30px;">
+                                <h3 style="font-size:18px; margin-bottom: 20px;">Itemized Budget Compliance Analysis</h3>
+                                <div class="custom-table-wrapper">
+                                    <table class="custom-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Budget Item</th>
+                                                <th>Requested</th>
+                                                <th>CMPDI Limit</th>
+                                                <th>Variance Check</th>
+                                                <th>Audit Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="financial-budget-tbody">
+                                            <!-- Dynamically populated -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- Guidelines checks list -->
+                            <div class="glass-panel" style="padding: 24px;">
+                                <h3 style="font-size: 16px; margin-bottom: 20px;">Policy Compliance Checklist</h3>
+                                <div class="compliance-list" id="compliance-checklist-container">
+                                    <!-- Dynamically populated -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 6. AI SCORES VIEW -->
+                    <div id="evaluation-tab" class="app-page-view">
+                        <div class="glass-panel" style="padding:30px; margin-bottom:30px;">
+                            <h2 style="font-size:24px; margin-bottom:10px;">Explainable AI R&D Decision Matrix</h2>
+                            <p style="color: var(--text-secondary); font-size:14px;">Dynamic evaluation scoring using technical soundness, financial validation, semantic novelty, and societal/coal impact metrics.</p>
+                        </div>
+                        
+                        <!-- Gauges -->
+                        <div class="score-gauges-grid" id="ai-gauges-container">
+                            <!-- Generates dynamically via app.js -->
+                        </div>
+                        
+                        <!-- AI Recommendation insights box -->
+                        <div class="glass-panel" style="padding: 30px;">
+                            <h3 style="font-size: 18px; color: var(--accent-cyan); margin-bottom: 15px;"><i class="fa-solid fa-microchip"></i> Explainable AI Insights (XAI)</h3>
+                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 24px; line-height: 1.8;" id="xai-insights-box">
+                                <!-- Populated dynamically by app.js -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 7. EXPERT REVIEW CONSTRUCT -->
+                    <div id="expert-tab" class="app-page-view">
+                        <div class="proposal-details-grid">
+                            <!-- Board consensus opinion list -->
+                            <div class="glass-panel" style="padding: 30px;">
+                                <h3 style="font-size: 18px; margin-bottom: 20px;">Expert Committee Verdict & Consensus Log</h3>
+                                
+                                <div style="display:flex; flex-direction:column; gap:20px; margin-bottom: 30px;" id="expert-consensus-comments">
+                                    <!-- Populated dynamically -->
+                                </div>
+                                
+                                <h4 style="font-size:15px; margin-bottom: 12px;">Add Your Expert Verdict</h4>
+                                <form id="expert-review-form" onsubmit="handleReviewSubmit(event)">
+                                    <div class="form-group">
+                                        <label class="form-label">Review Verdict</label>
+                                        <select class="form-input" id="expert-verdict-select" style="background:var(--bg-secondary);">
+                                            <option value="approved">Approve Proposal for Funding</option>
+                                            <option value="revision">Request Revision & Clarification</option>
+                                            <option value="rejected">Reject Proposal</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Committee Comments & Feedback</label>
+                                        <textarea class="form-input" id="expert-comments-textarea" style="height: 100px; resize: none;" placeholder="Write official committee feedback here..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn-primary" style="width: 100%;">Submit Official Consensus</button>
+                                </form>
+                            </div>
+                            
+                            <!-- Digital signature validator -->
+                            <div class="glass-panel" style="padding: 24px;">
+                                <h3 style="font-size: 16px; margin-bottom: 12px;">Secured Approval Ledger</h3>
+                                <p style="color:var(--text-secondary); font-size:12px; margin-bottom: 20px;">
+                                    Sign inside the secure console below. Your signature will be cryptographically bound to this R&D proposal's evaluation consensus.
+                                </p>
+                                
+                                <div class="signature-section">
+                                    <div class="signature-canvas-wrapper">
+                                        <canvas class="signature-canvas" id="digital-sig-canvas"></canvas>
+                                    </div>
+                                    <div class="signature-actions">
+                                        <button class="signature-clear-btn" onclick="clearSignatureCanvas()">Clear Signature Pad</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 8. ANALYTICS SUITE VIEW -->
+                    <div id="analytics-tab" class="app-page-view">
+                        <!-- Stat details -->
+                        <div class="stat-cards-grid">
+                            <div class="glass-panel stat-card">
+                                <div class="stat-card-header">
+                                    <span>Total Allocated Budget</span>
+                                    <div class="stat-card-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                                </div>
+                                <div class="stat-card-value">₹45.6 Cr</div>
+                                <div class="stat-card-trend trend-up">
+                                    <i class="fa-solid fa-chevron-up"></i> Within FY2026 guidelines
+                                </div>
+                            </div>
+                            <div class="glass-panel stat-card">
+                                <div class="stat-card-header">
+                                    <span>Approval Rate</span>
+                                    <div class="stat-card-icon"><i class="fa-solid fa-percent"></i></div>
+                                </div>
+                                <div class="stat-card-value">34.8%</div>
+                                <div class="stat-card-trend trend-down">
+                                    <i class="fa-solid fa-chevron-down"></i> Highly selective R&D filter
+                                </div>
+                            </div>
+                            <div class="glass-panel stat-card">
+                                <div class="stat-card-header">
+                                    <span>Avg. Review Cycle</span>
+                                    <div class="stat-card-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                                </div>
+                                <div class="stat-card-value">6.2 Days</div>
+                                <div class="stat-card-trend trend-down">
+                                    <i class="fa-solid fa-clock"></i> Down from 42 days (2025)
+                                </div>
+                            </div>
+                            <div class="glass-panel stat-card success">
+                                <div class="stat-card-header">
+                                    <span>Dispute Resolution Rate</span>
+                                    <div class="stat-card-icon"><i class="fa-solid fa-face-smile"></i></div>
+                                </div>
+                                <div class="stat-card-value">99.1%</div>
+                                <div class="stat-card-trend trend-up">
+                                    <i class="fa-solid fa-check"></i> High AI consensus agreement
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-grid">
+                            <!-- Proposal submission trends over years -->
+                            <div class="glass-panel chart-card">
+                                <div class="chart-header">
+                                    <h3 class="chart-title">CMPDI Submission & Approval Trends</h3>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="analytics-line-chart"></canvas>
+                                </div>
+                            </div>
+                            
+                            <!-- Financial audit distribution -->
+                            <div class="glass-panel chart-card">
+                                <div class="chart-header">
+                                    <h3 class="chart-title">R&D Fundings Breakdown by Sector</h3>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="analytics-doughnut-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 9. NOTIFICATIONS VIEW -->
+                    <div id="notifications-tab" class="app-page-view">
+                        <div class="glass-panel" style="padding:30px; margin-bottom: 24px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <h3 style="font-size:18px;">IntelliProposal System Notifications Hub</h3>
+                                <button class="table-btn" onclick="clearNotifications()">Clear All Alerts</button>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline" id="notifications-timeline-container">
+                            <!-- Generated dynamically in app.js -->
+                        </div>
+                    </div>
+                    
+                    <!-- 10. SETTINGS VIEW -->
+                    <div id="settings-tab" class="app-page-view">
+                        <div class="proposal-details-grid">
+                            <div class="glass-panel" style="padding:30px;">
+                                <h3 style="font-size:18px; margin-bottom: 20px;">CMPDI Profile & System Configurations</h3>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-input" value="Dr. R. K. Sen" disabled>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Designation / Role</label>
+                                    <input type="text" class="form-input" value="Chairman, CMPDI Expert Committee" disabled>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Assigned Department</label>
+                                    <input type="text" class="form-input" value="NaCCER (National Centre of Coal Energy Research)" disabled>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Preferred Evaluation Language</label>
+                                    <select class="form-input" id="setting-language-select" style="background:var(--bg-secondary);">
+                                        <option value="en">English (Official CMPDI Portal)</option>
+                                        <option value="hi">हिन्दी (Hindi - Rajbhasha Portal)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- System settings checkboxes -->
+                            <div class="glass-panel" style="padding: 24px;">
+                                <h3 style="font-size: 16px; margin-bottom: 20px;">System Tolerances & Flags</h3>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Maximum Similarity Threshold (Novelty)</label>
+                                    <select class="form-input" style="background:var(--bg-secondary);">
+                                        <option value="30">30% (High Plagiarism Severity)</option>
+                                        <option value="40" selected>40% (Standard Severity)</option>
+                                        <option value="50">50% (Lenient)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Security Protocol</label>
+                                    <div style="display:flex; flex-direction:column; gap:12px; margin-top:10px;">
+                                        <label style="font-size: 13px; display:flex; align-items:center; gap:8px;">
+                                            <input type="checkbox" checked> Enable digital ledger validation
+                                        </label>
+                                        <label style="font-size: 13px; display:flex; align-items:center; gap:8px;">
+                                            <input type="checkbox" checked> Notify investigators on AI verdict
+                                        </label>
+                                        <label style="font-size: 13px; display:flex; align-items:center; gap:8px;">
+                                            <input type="checkbox" checked> Enable automated equipment audit
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn-primary" style="width: 100%; margin-top: 10px;" onclick="saveSystemSettings()">Save Configurations</button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- FLOATING AI CHATBOT ASSISTANT                                             -->
+    <!-- ========================================================================= -->
+    <!-- Chatbot FAB -->
+    <div class="chatbot-fab" onclick="toggleChatbot()" title="Ask IntelliProposal AI Assistant">
+        <i class="fa-solid fa-comment-dots"></i>
+    </div>
+    
+    <!-- Chatbot Window -->
+    <div class="glass-panel chatbot-window" id="chatbot-window">
+        <div class="chatbot-header">
+            <div class="chatbot-brand">
+                <div class="chatbot-avatar"><i class="fa-solid fa-robot"></i></div>
+                <div class="chatbot-header-info">
+                    <h4>IntelliBot</h4>
+                    <span>Online & Analyzing</span>
+                </div>
+            </div>
+            <button class="chatbot-close-btn" onclick="toggleChatbot()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div class="chatbot-body" id="chatbot-body">
+            <div class="chat-bubble bot">
+                Namaskar! I am IntelliBot, your AI guide. You can ask me questions about R&D proposals, coal guidelines, budget compliance rules, similarity indexes, or system usage. How can I help you today?
+            </div>
+        </div>
+        
+        <div class="chatbot-footer">
+            <input type="text" class="chatbot-input" id="chatbot-input-field" placeholder="Ask about budget limit, similarity checks..." onkeypress="handleChatKeyPress(event)">
+            <button class="chatbot-send-btn" onclick="submitChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Link JS -->
+    <script src="app.js"></script>
+</body>
+</html>
