@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triage — Network Incident Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div id="splash-screen" class="splash-overlay">
+  <div class="splash-content">
+    <div class="splash-logo">
+      <div class="splash-icon">◈</div>
+      <div class="splash-title">SYSTEM TRIAGE OS</div>
+      <div class="splash-subtitle">Network Incident AI Triage Assistant · TRACK_ID=PS07</div>
+    </div>
+
+    <div class="splash-loader-block">
+      <div class="splash-scanner-ring">
+        <div class="ring-pulse"></div>
+        <div class="ring-core">⚡</div>
+      </div>
+
+      <div class="splash-progress-wrapper">
+        <div class="splash-progress-bar" id="splash-progress-bar"></div>
+      </div>
+
+      <div class="splash-status-line">
+        <span id="splash-log-text">Initializing AI Triage Pipeline...</span>
+        <span id="splash-percent-text" class="mono">0%</span>
+      </div>
+    </div>
+
+    <button id="btn-enter-system" class="btn-splash-enter" style="display: none;">
+      🚀 LAUNCH COMMAND CENTER
+    </button>
+
+    <div class="splash-footer-info">
+      <span>GROUPS ALERTS</span> · <span>RETRIEVES RUNBOOKS</span> · <span>GEMINI REASONING</span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+
+  <aside class="rail">
+    <div class="brand">
+      <div class="brand-mark">◈</div>
+      <div class="brand-text">
+        <div class="brand-name">Triage</div>
+        <div class="brand-sub">network incident assistant</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-item is-active" data-view="feed">
+        <span class="nav-label">Live Feed</span>
+        <span class="nav-count" id="count-feed">–</span>
+      </button>
+      <button class="nav-item" data-view="incidents">
+        <span class="nav-label">Incidents</span>
+        <span class="nav-count" id="count-incidents">–</span>
+      </button>
+      <button class="nav-item" data-view="noise">
+        <span class="nav-label">Noise</span>
+        <span class="nav-count" id="count-noise">–</span>
+      </button>
+      <button class="nav-item" data-view="runbooks">
+        <span class="nav-label">Runbooks</span>
+        <span class="nav-count" id="count-runbooks">–</span>
+      </button>
+      <button class="nav-item" data-view="analytics">
+        <span class="nav-label">Analytics</span>
+      </button>
+    </nav>
+
+    <div class="rail-foot">
+      <div class="pulse-row">
+        <span class="pulse-dot" id="status-dot"></span>
+        <span id="status-text">connecting…</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="stage">
+
+    <section id="view-feed" class="view is-active">
+      <header class="view-head">
+        <h1>Live alert feed</h1>
+        <p>Raw events as they arrive from the network. Click any alert card to expand and view its details (Time, Severity, Device, Type, Message).</p>
+      </header>
+      <div class="toolbar feed-toolbar">
+        <input type="text" id="feed-search" placeholder="Filter by alert ID, device, type, or message…">
+        <div class="filter-chips" id="feed-filter-chips">
+          <button class="chip is-active" data-filter="all">All</button>
+          <button class="chip chip-critical" data-filter="critical">Critical</button>
+          <button class="chip chip-warning" data-filter="warning">Warning</button>
+          <button class="chip chip-info" data-filter="info">Info</button>
+          <button class="chip chip-grouped" data-filter="grouped">Grouped</button>
+          <button class="chip chip-noise" data-filter="noise">Noise</button>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn-tool" id="btn-toggle-expand">⚡ Expand All</button>
+          <button class="btn-tool" id="btn-export-csv">📥 Export CSV</button>
+        </div>
+      </div>
+      <div id="feed-table" class="feed-cards-container"></div>
+    </section>
+
+    <section id="view-incidents" class="view">
+      <header class="view-head">
+        <h1>Incidents</h1>
+        <p>Correlated alert clusters, ranked by likely impact. Each has a recommended first response or an escalation.</p>
+      </header>
+      <div class="toolbar incidents-toolbar">
+        <input type="text" id="incidents-search" placeholder="Filter incidents by title, ID, or device…">
+        <div class="filter-chips" id="incidents-filter-chips">
+          <button class="chip is-active" data-filter="all">All</button>
+          <button class="chip chip-critical" data-filter="high">High Priority</button>
+          <button class="chip chip-warning" data-filter="medium">Medium Priority</button>
+          <button class="chip chip-info" data-filter="low">Low Priority</button>
+          <button class="chip chip-matched" data-filter="matched">Matched</button>
+          <button class="chip chip-escalated" data-filter="escalated">Escalated</button>
+        </div>
+      </div>
+      <div id="incidents-list" class="incident-list"></div>
+    </section>
+
+    <section id="view-noise" class="view">
+      <header class="view-head">
+        <h1>Noise</h1>
+        <p>Alerts with no correlating signal within the window — left alone rather than forced into an incident.</p>
+      </header>
+      <div id="noise-table" class="noise-cards-container"></div>
+    </section>
+
+    <section id="view-runbooks" class="view">
+      <header class="view-head">
+        <h1>Runbook library</h1>
+        <p>The grounding material every recommendation is drawn from and cited against.</p>
+      </header>
+      <div id="runbooks-list" class="runbook-list"></div>
+    </section>
+
+    <section id="view-analytics" class="view">
+      <header class="view-head">
+        <h1>Analytics</h1>
+        <p>How much the triage layer compresses noise into actionable work.</p>
+      </header>
+      <div id="analytics-grid" class="stat-grid"></div>
+    </section>
+
+  </main>
+</div>
+
+<div id="incident-modal" class="modal-backdrop">
+  <div class="modal">
+    <button class="modal-close" id="modal-close">×</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>

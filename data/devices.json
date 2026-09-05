@@ -1,0 +1,16 @@
+{
+  "core-router-1": {"criticality": "critical", "upstream": [], "type": "router"},
+  "dist-switch-1": {"criticality": "high", "upstream": ["core-router-1"], "type": "switch"},
+  "dist-switch-2": {"criticality": "high", "upstream": ["core-router-1"], "type": "switch"},
+  "access-switch-1": {"criticality": "medium", "upstream": ["dist-switch-1"], "type": "switch"},
+  "access-switch-2": {"criticality": "medium", "upstream": ["dist-switch-1"], "type": "switch"},
+  "access-switch-3": {"criticality": "medium", "upstream": ["dist-switch-2"], "type": "switch"},
+  "edge-firewall-1": {"criticality": "critical", "upstream": [], "type": "firewall"},
+  "vpn-gateway-1": {"criticality": "high", "upstream": ["edge-firewall-1"], "type": "gateway"},
+  "auth-server-1": {"criticality": "high", "upstream": [], "type": "server"},
+  "core-router-2": {"criticality": "critical", "upstream": [], "type": "router"},
+  "wan-link-2": {"criticality": "high", "upstream": ["core-router-2"], "type": "wan"},
+  "printer-42": {"criticality": "low", "upstream": [], "type": "printer"},
+  "iot-sensor-7": {"criticality": "low", "upstream": [], "type": "sensor"},
+  "iot-sensor-12": {"criticality": "low", "upstream": [], "type": "sensor"}
+}

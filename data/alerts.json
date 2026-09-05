@@ -1,0 +1,236 @@
+[
+  {
+    "id": "a001",
+    "timestamp": "2026-09-05T09:55:00Z",
+    "device": "core-router-1",
+    "type": "link_down",
+    "severity": "critical",
+    "message": "Interface Gi0/0/0 on core-router-1 changed state to DOWN",
+    "source_ip": null
+  },
+  {
+    "id": "a002",
+    "timestamp": "2026-09-05T09:55:08Z",
+    "device": "dist-switch-1",
+    "type": "device_unreachable",
+    "severity": "critical",
+    "message": "dist-switch-1 stopped responding to SNMP polling",
+    "source_ip": null
+  },
+  {
+    "id": "a003",
+    "timestamp": "2026-09-05T09:55:11Z",
+    "device": "dist-switch-2",
+    "type": "device_unreachable",
+    "severity": "critical",
+    "message": "dist-switch-2 stopped responding to SNMP polling",
+    "source_ip": null
+  },
+  {
+    "id": "a004",
+    "timestamp": "2026-09-05T09:55:20Z",
+    "device": "access-switch-1",
+    "type": "device_unreachable",
+    "severity": "warning",
+    "message": "access-switch-1 unreachable from monitoring host",
+    "source_ip": null
+  },
+  {
+    "id": "a005",
+    "timestamp": "2026-09-05T09:55:24Z",
+    "device": "access-switch-2",
+    "type": "device_unreachable",
+    "severity": "warning",
+    "message": "access-switch-2 unreachable from monitoring host",
+    "source_ip": null
+  },
+  {
+    "id": "a006",
+    "timestamp": "2026-09-05T09:55:33Z",
+    "device": "access-switch-3",
+    "type": "high_latency",
+    "severity": "warning",
+    "message": "access-switch-3 round-trip time 1800ms, threshold 200ms",
+    "source_ip": null
+  },
+  {
+    "id": "a007",
+    "timestamp": "2026-09-05T09:55:40Z",
+    "device": "access-switch-1",
+    "type": "high_latency",
+    "severity": "warning",
+    "message": "access-switch-1 round-trip time 2200ms, threshold 200ms",
+    "source_ip": null
+  },
+  {
+    "id": "a008",
+    "timestamp": "2026-09-05T09:56:05Z",
+    "device": "core-router-1",
+    "type": "interface_flapping",
+    "severity": "critical",
+    "message": "Interface Gi0/0/0 on core-router-1 flapped 4 times in 60s",
+    "source_ip": null
+  },
+  {
+    "id": "a009",
+    "timestamp": "2026-09-05T09:56:30Z",
+    "device": "dist-switch-1",
+    "type": "high_latency",
+    "severity": "warning",
+    "message": "dist-switch-1 round-trip time 1500ms, threshold 200ms",
+    "source_ip": null
+  },
+  {
+    "id": "a010",
+    "timestamp": "2026-09-05T10:05:00Z",
+    "device": "auth-server-1",
+    "type": "auth_failure",
+    "severity": "warning",
+    "message": "Failed login for user 'admin' from 198.51.100.9",
+    "source_ip": "198.51.100.9"
+  },
+  {
+    "id": "a011",
+    "timestamp": "2026-09-05T10:05:12Z",
+    "device": "auth-server-1",
+    "type": "auth_failure",
+    "severity": "warning",
+    "message": "Failed login for user 'admin' from 198.51.100.9",
+    "source_ip": "198.51.100.9"
+  },
+  {
+    "id": "a012",
+    "timestamp": "2026-09-05T10:05:24Z",
+    "device": "auth-server-1",
+    "type": "auth_failure",
+    "severity": "warning",
+    "message": "Failed login for user 'root' from 198.51.100.9",
+    "source_ip": "198.51.100.9"
+  },
+  {
+    "id": "a013",
+    "timestamp": "2026-09-05T10:05:36Z",
+    "device": "auth-server-1",
+    "type": "auth_failure",
+    "severity": "critical",
+    "message": "Failed login for user 'svc-backup' from 198.51.100.9",
+    "source_ip": "198.51.100.9"
+  },
+  {
+    "id": "a014",
+    "timestamp": "2026-09-05T10:05:48Z",
+    "device": "auth-server-1",
+    "type": "auth_failure",
+    "severity": "critical",
+    "message": "Failed login for user 'admin' from 198.51.100.9",
+    "source_ip": "198.51.100.9"
+  },
+  {
+    "id": "a015",
+    "timestamp": "2026-09-05T10:06:00Z",
+    "device": "auth-server-1",
+    "type": "auth_failure",
+    "severity": "critical",
+    "message": "Account lockout threshold approaching for 'admin', source 198.51.100.9",
+    "source_ip": "198.51.100.9"
+  },
+  {
+    "id": "a016",
+    "timestamp": "2026-09-05T10:15:00Z",
+    "device": "core-router-2",
+    "type": "interface_flapping",
+    "severity": "warning",
+    "message": "Interface Te0/1/0 on core-router-2 flapped 3 times in 90s",
+    "source_ip": null
+  },
+  {
+    "id": "a017",
+    "timestamp": "2026-09-05T10:15:40Z",
+    "device": "wan-link-2",
+    "type": "interface_flapping",
+    "severity": "warning",
+    "message": "wan-link-2 carrier signal flapped 2 times in 90s",
+    "source_ip": null
+  },
+  {
+    "id": "a018",
+    "timestamp": "2026-09-05T10:16:15Z",
+    "device": "core-router-2",
+    "type": "interface_flapping",
+    "severity": "critical",
+    "message": "Interface Te0/1/0 on core-router-2 flapped 9 times in 90s",
+    "source_ip": null
+  },
+  {
+    "id": "a019",
+    "timestamp": "2026-09-05T10:16:50Z",
+    "device": "wan-link-2",
+    "type": "high_latency",
+    "severity": "warning",
+    "message": "wan-link-2 round-trip time 640ms, threshold 200ms",
+    "source_ip": null
+  },
+  {
+    "id": "a020",
+    "timestamp": "2026-09-05T10:25:00Z",
+    "device": "edge-firewall-1",
+    "type": "high_latency",
+    "severity": "critical",
+    "message": "edge-firewall-1 CPU 98%, packet processing delayed 900ms",
+    "source_ip": null
+  },
+  {
+    "id": "a021",
+    "timestamp": "2026-09-05T10:25:25Z",
+    "device": "vpn-gateway-1",
+    "type": "device_unreachable",
+    "severity": "critical",
+    "message": "vpn-gateway-1 unreachable from monitoring host",
+    "source_ip": null
+  },
+  {
+    "id": "a022",
+    "timestamp": "2026-09-05T10:25:50Z",
+    "device": "vpn-gateway-1",
+    "type": "high_latency",
+    "severity": "warning",
+    "message": "vpn-gateway-1 round-trip time 1100ms, threshold 200ms",
+    "source_ip": null
+  },
+  {
+    "id": "a023",
+    "timestamp": "2026-09-05T10:00:00Z",
+    "device": "printer-42",
+    "type": "device_unreachable",
+    "severity": "info",
+    "message": "printer-42 did not respond to a single ping sweep",
+    "source_ip": null
+  },
+  {
+    "id": "a024",
+    "timestamp": "2026-09-05T10:40:00Z",
+    "device": "iot-sensor-7",
+    "type": "high_latency",
+    "severity": "info",
+    "message": "iot-sensor-7 round-trip time 250ms, threshold 200ms",
+    "source_ip": null
+  },
+  {
+    "id": "a025",
+    "timestamp": "2026-09-05T10:55:00Z",
+    "device": "iot-sensor-12",
+    "type": "device_unreachable",
+    "severity": "info",
+    "message": "iot-sensor-12 missed one scheduled check-in",
+    "source_ip": null
+  },
+  {
+    "id": "a026",
+    "timestamp": "2026-09-05T11:10:00Z",
+    "device": "printer-42",
+    "type": "high_latency",
+    "severity": "info",
+    "message": "printer-42 round-trip time 300ms, threshold 200ms",
+    "source_ip": null
+  }
+]
